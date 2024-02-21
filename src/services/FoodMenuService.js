@@ -12,8 +12,8 @@ const create = (foodMenu) =>{
 const remove = (id) =>{
     return http.delete("/foodmenu/"+ id);
 }
-const update =(id) =>{
-    return http.put("/foodmenu/"+id);
+const update =(id,foodMenu) =>{
+    return http.put("/foodmenu/"+id,foodMenu);
 }
 const FoodMenuService = {
     getAll,

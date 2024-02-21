@@ -1,10 +1,11 @@
 import React, { useState, useEffect} from "react";
-import { useParams, NavLink  } from "react-router-dom";
+import { useParams, NavLink, useNavigate  } from "react-router-dom";
 import MainLayout from '../layouts/MainLayout';
 import FoodMenuService from "../services/FoodMenuService";
 import swal from "sweetalert";
 
 const DeleteProduct = () => {
+  let navigate = useNavigate();
   let params = useParams();
   let id = params.id;
   let [foodMenu, setFoodMenu] = useState([]);

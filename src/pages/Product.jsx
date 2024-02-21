@@ -20,6 +20,7 @@ const Product = () => {
   useEffect(()=>{
     fetchFoodMenus()
   },[]);
+  
   return (
     <MainLayout>
       <h1 className="mt-3">Delivery Menu</h1>
@@ -31,12 +32,12 @@ const Product = () => {
           </NavLink>
         </div>
       </div>
-      <div className="row mt-2 row-cols-lg-4 row-cols-3 g-2">
+      <div className="row mt-2 row-cols-lg-3 row-cols-2 g-2">
         {
           foodmenus.map((menu)=>(
-          <FoodMenuCard menu={menu}/>
+          <FoodMenuCard key={menu._id} menu={menu}/>
           ))
-        };
+        }
       </div>
     </MainLayout>
   );
@@ -45,7 +46,7 @@ const Product = () => {
 const FoodMenuCard = (props) => {
   return (
     <>
-      <div className="col">
+      <div className="col-12">
         <div className="card">
           <div className="card-body">
             <img src={logo} alt="" />
