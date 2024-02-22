@@ -42,8 +42,8 @@ const Navbar = () => {
                 Other
               </a>
               <div className="dropdown-menu" aria-labelledby="dropdownId">
-                <a className="dropdown-item" href="#">
-                  Action 1
+                <a className="dropdown-item" href="/user">
+                  User
                 </a>
                 <a className="dropdown-item" href="#">
                   Action 2

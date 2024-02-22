@@ -3,9 +3,9 @@ import MainLayout from '../layouts/MainLayout';
 import { NavLink } from "react-router-dom";
 import UserService from "../services/UserService";
 const User = () => {
-  const [user, setUser] = useState([]);
+  const [User, setUser] = useState([]);
   const fetchUser = ()=>{
-    FoodMenuService.getAll()
+    UserService.getAll()
     .then((res)=>{
       console.log(res.data.data)
       setUser(res.data.data)
@@ -19,69 +19,67 @@ const User = () => {
   },[]);
   return (
     <MainLayout>
-      <h1 className="mt-3">Edit Profile</h1>
+      <h1 className="mt-3">All User</h1>
       <hr />
       <div className="row">
         <div className="col d-flex justify-content-end">
-          <NavLink to="/product/new" className="btn btn-success">
+          <NavLink to="/user/new" className="btn btn-success">
             Add a new User
           </NavLink>
         </div>
       </div>
-      <div className="row mt-2 row-cols-lg-4 row-cols-3 g-2">
+      <div className="row">
         {
-          user.map((menu)=>(
-          <FoodMenuCard menu={menu}/>
+          User.map((user)=>(
+          <UserCard key={user.id} user={user}/>
           ))
-        };
+        }
       </div>
     </MainLayout>
   )
 }
-const FoodMenuCard = (props) => {
+const UserCard = (props) => {
   return (
     <>
+    <div className="row">
       <div className="col">
-        <div className="card">
+        <div className="card mt-3">
           <div className="card-body">
-            <img src={logo} alt="" />
             <div className="card-text">
-              <h5>{props.menu.name}</h5>
-              <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Fugiat, saepe!
-              </p>
-              <h5>${props.menu.price}</h5>
-              <h6>{props.menu.category}</h6>
+              <h2> {props.user.first_name}  {props.user.last_name}</h2>
+              <h5>{props.user.tel}</h5>
+              <h6>{props.user.username}</h6>
+              <h6>{props.user.password}</h6>
               <NavLink
-                to={"/product/" + props.menu._id}
+                to={"/user/" + props.user._id}
                 className="btn btn-primary"
               >
-                Learn More
-              </NavLink>{" "}
+               ดูข้อมูลเพิ่มเติม
+              {/* </NavLink>{" "}
               <NavLink
-                to={"/product/" + props.menu._id}
+                to={"/product/" + props.user._id}
                 className="btn btn-success"
               >
-                Buy Now
+                Buy Now */}
               </NavLink>{" "}
               <NavLink
-                to={"/product/edit/" + props.menu._id}
+                to={"/user/edit/" + props.user._id}
                 className="btn btn-warning"
               >
-                Edit
+                แก้ไข
               </NavLink>{" "}
               <NavLink
-                to={"/product/delete/" + props.menu._id}
+                to={"/user/delete/" + props.user._id}
                 className="btn btn-danger"
               >
-                Delete
+                ลบ
               </NavLink>
             </div>
           </div>
         </div>
       </div>
+      </div>
     </>
-  );
+  )
 };
 export default User

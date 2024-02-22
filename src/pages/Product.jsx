@@ -48,7 +48,7 @@ const FoodMenuCard = (props) => {
     <>
       <div className="col-12">
         <div className="card">
-          <div className="card-body">
+          <div className="card-body" style={{'padding-left':45 }} >
             <img src={logo} alt="" />
             <div className="card-text">
               <h5>{props.menu.name}</h5>

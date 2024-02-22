@@ -15,7 +15,7 @@ const EditProduct = () => {
   useEffect(() => {
     FoodMenuService.get(id)
       .then((res) => {
-        setFoodMenu(res.data.data); // นำข้อมูลที่ได้จาก API มาอัพเดท state
+        setFoodMenu(res.data.data); 
       })
       .catch((e) => console.log(e));
   }, [id]);
@@ -27,7 +27,7 @@ const EditProduct = () => {
 
   const saveFoodMenu = (e) => {
     e.preventDefault();
-    FoodMenuService.update(id, foodMenu) // ใช้เมธอด update จาก FoodMenuService เพื่อแก้ไขข้อมูล
+    FoodMenuService.update(id, foodMenu)
       .then(() => {
         swal({
           icon: "success",
@@ -58,7 +58,7 @@ const EditProduct = () => {
                   name="name"
                   id="name"
                   placeholder="Name"
-                  value={foodMenu.name} // ใช้ค่าจาก state
+                  value={foodMenu.name}
                   onChange={handleInputChange}
                 />
               </div>
@@ -74,7 +74,7 @@ const EditProduct = () => {
                   name="price"
                   id="price"
                   placeholder="Price"
-                  value={foodMenu.price} // ใช้ค่าจาก state
+                  value={foodMenu.price}
                   onChange={handleInputChange}
                 />
               </div>
@@ -90,7 +90,7 @@ const EditProduct = () => {
                   name="category"
                   id="category"
                   placeholder="Category"
-                  value={foodMenu.category} // ใช้ค่าจาก state
+                  value={foodMenu.category}
                   onChange={handleInputChange}
                 />
               </div>

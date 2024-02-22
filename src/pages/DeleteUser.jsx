@@ -1,17 +1,17 @@
 import React, { useState, useEffect} from "react";
 import { useParams, NavLink, useNavigate  } from "react-router-dom";
 import MainLayout from '../layouts/MainLayout';
-import FoodMenuService from "../services/FoodMenuService";
+import UserService from "../services/UserService";
 import swal from "sweetalert";
 
-const DeleteProduct = () => {
-  let navigate = useNavigate();
+const DeleteUser = () => {
+    let navigate = useNavigate();
   let params = useParams();
   let id = params.id;
-  let [foodMenu, setFoodMenu] = useState([]);
+  let [User, setUser] = useState([]);
 
   const fetchFoodMenu = (id) => {
-    FoodMenuService.remove(id)
+    UserService.remove(id)
     .then((res)=>{
       swal({
         title: 'ยืนยัน!! ลบข้อมูล',
@@ -23,7 +23,7 @@ const DeleteProduct = () => {
         confirmButtonText: 'ยืนยัน',
         cancelButtonText: 'ปิด'
       });
-      navigate("/product");
+      navigate("/user");
     })
       .catch((e) => console.log(e));
   };
@@ -34,19 +34,19 @@ const DeleteProduct = () => {
 
   const handleDelete = async (id) => {
     try {
-      await FoodMenuService.remove(id);
-      history.push("/product");
+      await UserService.remove(id);
+      history.push("/user");
     } catch (error) {
-      console.error("Error deleting product:", error);
+      console.error("Error deleting user:", error);
     }
   };
 
   return (
     <MainLayout>
-      <h1 className="mt-3">Delete Product</h1>
+      <h1 className="mt-3">Delete User</h1>
       <div className="row mt-2 row-cols-lg-4 row-cols-3 g-2">
-        {foodMenu.map((menu) => (
-          <FoodMenuCard key={menu.id} menu={menu} onDelete={handleDelete} />
+        {User.map((user) => (
+          <UserCard key={user.id} user={user} onDelete={handleDelete} />
         ))}
       </div>
       <hr />
@@ -54,9 +54,9 @@ const DeleteProduct = () => {
   );
 };
 
-const FoodMenuCard = (props) => {
+const UserCard = (props) => {
   const handleDeleteClick = () => {
-    props.onDelete(props.menu.id);
+    props.onDelete(props.user.id);
   };
 
   return (
@@ -66,7 +66,7 @@ const FoodMenuCard = (props) => {
           <div className="card-body">
             {/* ... */}
             <NavLink
-              to={"/product/delete/" + props.menu.id}
+              to={"/user/delete/" + props.user.id}
               className="btn btn-danger"
               onClick={handleDeleteClick}
             >
@@ -76,7 +76,7 @@ const FoodMenuCard = (props) => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default DeleteProduct;
+export default DeleteUser
