@@ -6,11 +6,11 @@ const getAll = () =>{
 const get = (id) =>{
     return http.get("/user/"+ id);
 }
-const create = (User) =>{
-    return http.post("/user",User);
+const create = (user) =>{
+    return http.post("/user",user);
 }
-const update =(id,User) =>{
-    return http.put("/user/"+id,User);
+const update =(id,user) =>{
+    return http.put("/user/"+id,user);
 }
 const remove = (id) =>{
     return http.delete("/user/"+ id);

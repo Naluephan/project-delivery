@@ -15,11 +15,15 @@ const remove = (id) =>{
 const update =(id,foodMenu) =>{
     return http.put("/foodmenu/"+id,foodMenu);
 }
+const search =(name) =>{
+    return http.get("/foodmenu/name/"+name);
+}
 const FoodMenuService = {
     getAll,
     get,
     create,
     remove,
-    update
+    update,
+    search
 }
 export default FoodMenuService;

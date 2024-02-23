@@ -5,7 +5,7 @@ const Navbar = () => {
     <nav className="navbar navbar-expand-sm navbar-dark bg-success">
       <div className="container">
         <NavLink className="navbar-brand" to="/">
-          Store
+          Delivery Menu
         </NavLink>
         <button
           className="navbar-toggler d-lg-none"
@@ -30,6 +30,11 @@ const Navbar = () => {
                 Product
               </NavLink>
             </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/user">
+                User
+              </NavLink>
+            </li>
             <li className="nav-item dropdown">
               <a
                 className="nav-link dropdown-toggle"
@@ -42,7 +47,7 @@ const Navbar = () => {
                 Other
               </a>
               <div className="dropdown-menu" aria-labelledby="dropdownId">
-                <a className="dropdown-item" href="/user">
+                <a className="dropdown-item" href="#">
                   User
                 </a>
                 <a className="dropdown-item" href="#">

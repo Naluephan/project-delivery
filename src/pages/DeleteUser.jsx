@@ -2,7 +2,7 @@ import React, { useState, useEffect} from "react";
 import { useParams, NavLink, useNavigate  } from "react-router-dom";
 import MainLayout from '../layouts/MainLayout';
 import UserService from "../services/UserService";
-import swal from "sweetalert";
+import Swal from "sweetalert2";
 
 const DeleteUser = () => {
     let navigate = useNavigate();
@@ -13,17 +13,25 @@ const DeleteUser = () => {
   const fetchFoodMenu = (id) => {
     UserService.remove(id)
     .then((res)=>{
-      swal({
-        title: 'ยืนยัน!! ลบข้อมูล',
-        text: "ต้องการดำเนินการใช่หรือไม่!",
-        icon: 'warning',
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: '#e83e3e',
-        cancelButtonColor: '#bb93ab',
-        confirmButtonText: 'ยืนยัน',
-        cancelButtonText: 'ปิด'
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            title: "Deleted!",
+            text: "Your file has been deleted.",
+            icon: "success"
+          }).then(() => {
+            navigate("/user");
+          });
+        }
       });
-      navigate("/user");
     })
       .catch((e) => console.log(e));
   };

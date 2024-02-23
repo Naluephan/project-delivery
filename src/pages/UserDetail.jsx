@@ -8,7 +8,7 @@ const UserDetail = () => {
 
 
   let id = params.id;
-  let [User, setUser] = useState({});
+  let [user, setUser] = useState({});
   const fetchUser= (id)=>{
     UserService.get(id)
     .then((res)=>{
@@ -29,13 +29,13 @@ const UserDetail = () => {
           <label htmlFor="" className="lblStyle">
             ชื่อ-นามสกุล:{" "} 
           </label>{" "}
-          {User.full_name} {User.full_name}
+          {user.full_name.first_name} {user.full_name.last_name}
         </p>
         <p>
           <label htmlFor="" className="lblStyle">
             เบอร์โทรศัพท์:{" "}
           </label>{" "}
-         {User.tel}
+         {user.tel}
         </p>
         <p>
           <label htmlFor="" className="lblStyle">
@@ -47,13 +47,13 @@ const UserDetail = () => {
           <label htmlFor="" className="lblStyle">
             Username:{" "}
           </label>{" "}
-          {User.username}
+          {user.username}
         </p>
         <p>
           <label htmlFor="" className="lblStyle">
             Password:{" "}
           </label>{" "}
-          {User.password}
+          {user.password}
         </p>
         <p className="text-center">
         <NavLink

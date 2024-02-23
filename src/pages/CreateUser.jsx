@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import MainLayout from "../layouts/MainLayout";
 import UserService from "../services/UserService";
 import { useNavigate } from "react-router-dom";
-import swal from "sweetalert";
+import Swal from "sweetalert2";
 const CreateUser = () => {
 let navigate = useNavigate();
   let [user,setUser] = useState({});
@@ -14,14 +14,24 @@ let navigate = useNavigate();
     e.preventDefault();
     UserService.create(user)
     .then((res)=>{
-      swal({
-        icon: "success",
-        title: "สร้างสมาชิกสำเร็จ",
-        showConfirmButton: false,
-        timer: 1500
-      });
-      navigate("/user");
-    })
+      Swal.fire({
+        icon: "warning",
+        title: "ต้องการเพิ่มสมาชิกหรือไม่",
+        showCancelButton: true,
+confirmButtonColor: "#3085d6",
+cancelButtonColor: "#d33",
+confirmButtonText: "ตกลง"})
+.then((result) => {
+  if (result.isConfirmed) {
+    Swal.fire({
+      title: "เพิ่มสมาชิกสำเร็จ",
+      icon: "success",
+    }).then(() => {
+      navigate("/user")
+    });
+  }
+});
+})
     .catch((e)=>console.log(e));
   }
   return (

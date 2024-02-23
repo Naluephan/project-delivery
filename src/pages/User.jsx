@@ -31,7 +31,7 @@ const User = () => {
       <div className="row">
         {
           User.map((user)=>(
-          <UserCard key={user.id} user={user}/>
+          <UserCard key={user._id} user={user}/>
           ))
         }
       </div>
@@ -39,29 +39,31 @@ const User = () => {
   )
 }
 const UserCard = (props) => {
+  
   return (
     <>
     <div className="row">
-      <div className="col">
+      <div className="col-12">
         <div className="card mt-3">
           <div className="card-body">
             <div className="card-text">
-              <h2> {props.user.first_name}  {props.user.last_name}</h2>
+              <h2> {props.user.full_name}  {props.user.full_name}</h2>
               <h5>{props.user.tel}</h5>
               <h6>{props.user.username}</h6>
               <h6>{props.user.password}</h6>
+              <div className="col-12 d-flex justify-content-end">
               <NavLink
                 to={"/user/" + props.user._id}
                 className="btn btn-primary"
               >
-               ดูข้อมูลเพิ่มเติม
-              {/* </NavLink>{" "}
-              <NavLink
+               ดูเพิ่มเติม
+              </NavLink>{" "}
+              {/* <NavLink
                 to={"/product/" + props.user._id}
                 className="btn btn-success"
               >
-                Buy Now */}
-              </NavLink>{" "}
+                Buy Now
+              </NavLink>{" "} */}
               <NavLink
                 to={"/user/edit/" + props.user._id}
                 className="btn btn-warning"
@@ -74,6 +76,7 @@ const UserCard = (props) => {
               >
                 ลบ
               </NavLink>
+              </div>
             </div>
           </div>
         </div>
