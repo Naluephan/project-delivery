@@ -67,12 +67,13 @@ const FoodMenuCard = (props) => {
       <div className="col-12">
         <div className="card">
           <div className="card-body">
-            <h4>{props.menu.res_name}</h4>
-            <img src={`/images/${props.menu.img}`} alt="" />
+            <center>
+            <h4>{props.menu.res_name}</h4></center>
+            <center><img src={`/images/${props.menu.img}`} alt="" style={{ width:'75%', borderRadius:'5%'}}/></center>
             <div className="card-text">
-              <h5>{props.menu.name}</h5>
-              <h5>${props.menu.price}</h5>
-              <h6>{props.menu.category}</h6>
+              <center><h5>{props.menu.name}</h5></center>
+              <center><h5>${props.menu.price}</h5></center>
+              <center><h6>{props.menu.category}</h6></center>
               <div className="col d-flex justify-content-center">
                 <NavLink
                   to={"/product/" + props.menu._id}

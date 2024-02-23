@@ -2,7 +2,6 @@ import react,{ useState, useEffect } from "react";
 import MainLayout from '../layouts/MainLayout';
 import { useParams, NavLink } from "react-router-dom";
 import FoodMenuService from "../services/FoodMenuService";
-import logo from "../assets/react.svg"
 const ProductDetail = () => {
   let params = useParams();
   let id = params.id;
@@ -23,9 +22,15 @@ const ProductDetail = () => {
       <hr />
       <div className="row mt-3">
         <div className="col-md-4">
-          <img src={logo} alt="" style={{ width:'100%' }}/>
+          <img src={`/images/${foodMenu.img}`} alt="" style={{ width:'100%', borderRadius:'10%'}}/>
         </div>
         <div className="col-md-8 border p-4">
+        <p>
+            <label htmlFor="" className="lblStyle">
+              Restaurant Name:{" "}
+            </label>{" "}
+            {foodMenu.res_name}
+          </p>
           <p>
             <label htmlFor="" className="lblStyle">
               Name:{" "}

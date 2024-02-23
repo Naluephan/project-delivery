@@ -29,7 +29,7 @@ const UserDetail = () => {
           <label htmlFor="" className="lblStyle">
             ชื่อ-นามสกุล:{" "} 
           </label>{" "}
-          {user.full_name.first_name} {user.full_name.last_name}
+          {user.full_name} {user.full_name}
         </p>
         <p>
           <label htmlFor="" className="lblStyle">
