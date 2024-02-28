@@ -69,7 +69,7 @@ const FoodMenuCard = (props) => {
           <div className="card-body">
             <center>
             <h4>{props.menu.res_name}</h4></center>
-            <center><img src={`/images/${props.menu.img}`} alt="" style={{ width:'75%', borderRadius:'5%'}}/></center>
+            <center><img src={`/images/${props.menu.img}`} alt="" style={{ width:'75%',height:'25%', borderRadius:'5%'}}/></center>
             <div className="card-text">
               <center><h5>{props.menu.name}</h5></center>
               <center><h5>${props.menu.price}</h5></center>
